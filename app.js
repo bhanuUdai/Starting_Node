@@ -11,10 +11,10 @@ const http=require('http');
 const server=http.createServer(function(req,res)
 {
    // console.log(req.url,req.method,req.headers)
-    // res.setHeader('Content-Type','text/html');
+    res.setHeader('Content-Type','text/html');
     if(req.url==='/')
     {
-        res.write(`<html>
+        res.write(`<html>    
         <head>
             <title>
                 My First Page
@@ -27,7 +27,7 @@ const server=http.createServer(function(req,res)
             </form>
         </body>
     </html>`)
-    return res.end()
+    return res.end() // res.end() tells the node that our code ends here, below this if we agin write res.write(), it will give error,also here we are using return because here we want to stop the code and it will not execute further below. Otherwise it will also execute content of another url
     }
     
     if(req.url==='/about?')
@@ -65,4 +65,4 @@ const server=http.createServer(function(req,res)
      res.end()
 })
 
-server.listen(3000)
+server.listen(3000)  
